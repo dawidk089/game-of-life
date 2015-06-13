@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="application-name" content="a simple web application using AJAX"/>
+    <meta name="description" content="the second test in the field of the Internet techniques"/>
+    <meta name="keywords" content="HTML,CSS,AJAX,JSON,JavaScript,TI,gr. czwartkowa"/>
+    <meta name="author" content="Dawid Karminski"/>
+
+    <title>Strona główna</title>
+
+    <script src="js/chart.js"></script>
+    <script src="js/game_life.js"></script>
+
+    <link rel="stylesheet" href="css/main_css.css"/>
+</head>
+
+<body>
+<!-- HEADER -->
+<header>
+    <h1>Gra w życie wg zasad Conway'a</h1>
+</header>
+<!-- NAV -->
+<nav>
+    <ul>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="index.html">Strona główna</a></li>
+    </ul>
+</nav>
+<!-- section -->
+<!-- flexbox -->
+<div id="game_wrapper">
+    <section>
+        <h2 id="incentive"></h2>
+        <div id="fast_game">
+        </div>
+    </section><!--
+    --><aside>
+        <form>
+            <label>bok pola
+                <input type="text" name="field_amount">
+            </label>
+            <label>krok czasowy
+                <input type="text" name="step_delay">
+            </label>
+                <input type="button" onclick="console.log('next step')" value="Next step" name="step">
+            <label>zasady generatora
+                <select name="mode">
+                    <option value="0">conway</option>
+                    <option value="1">own</option>
+                </select>
+            </label>
+            <input type="button" onclick="startss(event)" name="start" value="start">
+            <input type="button" onclick="game.stop(event)" name="stop" value="stop">
+            <div id="ranges"></div>
+        </form>
+    </aside>
+</div>
+<!-- footer -->
+<footer>
+
+</footer>
+
+
+<p>&gt;Plan strony</p>
+<ul>
+    <li>na cala strone generator gry w zycie - losowy</li>
+    <li>na gorze pasek menu</li>
+    <li>lewy-gorny rog - informacje o autorze</li>
+</ul>
+</body>
+
+</html>
+<!-- article -->
+<!-- aside -->
