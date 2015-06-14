@@ -5,7 +5,9 @@
 board = {
     c: null,
     pos_tab: [],
-    cell_radius: null,
+    cell_radius: 20,
+    canvas_h: 500,
+    canvas_w: 500,
     size_i: 0,
     size_j: 0,
     cells: [],

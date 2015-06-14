@@ -1,10 +1,13 @@
 window.onload = function () {
-    
-    beggining()
-    
-    
-    
-    
+    beggining();
+
+    document.forms[0].side_size.value = board.canvas_h;
+    document.forms[0].cell_radius.value = board.cell_radius;
+    document.forms[0].time_step.value = game.time_step;
+
+
+
+
 };
 
 function startss(event){
@@ -12,29 +15,39 @@ function startss(event){
     game.start(event);
 }
 
-function beggining( ) {
 
-    var canvas_h = 500;
-    var canvas_w = canvas_h;
+/**
+ * wyznacza ile komórek zmieści się w planszy
+ * wyznacza szerokość marginesów planszy
+ * ustawia canvas
+ * ustawia tło planszy
+ * wyznacza pozycje komórek
+ * rysuje komórki
+ */
+function beggining() {
 
-    board.cell_radius = 8;
     var interspace = 2;
 
     // oblicza ile zmiescie sie komorek
-    var amount_cell = Math.floor((canvas_h)/(2*(board.cell_radius+interspace)));
+    var amount_cell = Math.floor((board.canvas_h)/(2*(board.cell_radius+interspace)));
 
-    var marginspace_v = (canvas_h-amount_cell*(2*(board.cell_radius+interspace)))/2;
+    var marginspace_v = (board.canvas_h-amount_cell*(2*(board.cell_radius+interspace)))/2;
     var marginspace_h = marginspace_v;
+
     console.log('>(i)prepared variable');
     console.log('cell radius is '+board.cell_radius);
     console.log('marginspace is '+marginspace_v);
     console.log('amount cell is '+amount_cell);
+    console.log('side size is '+board.canvas_h);
+    console.log('time step is '+board.time_step);
 
-    // responsywny canvas w przyszlosci
+
+
+    // responsywny canvas
     var canvas_init_text = '\
         <canvas id="fast_game_chart"  \
-        width="'+canvas_w+'" \
-        height="'+canvas_h+'"> \
+        width="'+board.canvas_w+'" \
+        height="'+board.canvas_h+'"> \
         <p>Twoja przeglądarka nie obsługuje canvas.</p> \
         </canvas>';
 
@@ -44,15 +57,32 @@ function beggining( ) {
 
     var box = document.getElementById('fast_game_chart');
     if(box && box.getContext) {
-
         board.c = box.getContext('2d');
-        board.c.fillStyle = "#000";
-        board.c.fillRect(0, 0, canvas_h, canvas_w);
 
-        for( var x=marginspace_h+board.cell_radius+interspace; x<canvas_w-(marginspace_h+board.cell_radius); x+=2*(board.cell_radius+interspace)) {
+        board.c.fillStyle = "#000";
+        board.c.fillRect(0, 0, board.canvas_h, board.canvas_w);
+
+        min_pos_x = marginspace_h + board.cell_radius + interspace;
+        max_pos_x = board.canvas_w - (marginspace_h + board.cell_radius);
+        min_pos_y = marginspace_v + board.cell_radius;
+        max_pos_y = board.canvas_h - (marginspace_v + board.cell_radius);
+
+        //console.warn('min x:', min_pos_x);
+        //console.warn('max x:', max_pos_x);
+        //console.warn('min y:', min_pos_y);
+        //console.warn('max y:', max_pos_y);
+        //console.warn('board.canvas_w:', board.canvas_w);
+        //console.warn('board.cell_radius:', board.cell_radius);
+
+        board.pos_tab = [];
+
+        for (var x = min_pos_x; x < max_pos_x; x += 2 * (board.cell_radius + interspace)) {
             var pos_row = [];
-            for (var y = marginspace_v + board.cell_radius + interspace; y < canvas_h - (marginspace_v + board.cell_radius); y += 2 * (board.cell_radius + interspace))
+            for (var y = min_pos_y; y < max_pos_y; y += 2 * (board.cell_radius + interspace)) {
                 pos_row.push({'x': x, 'y': y, 'state': 'dead'});
+                //console.warn('pakowanie pos_tab', x, y)
+            }
+
             board.pos_tab.push(pos_row);
         }
         board.size_i = board.pos_tab.length;
@@ -62,8 +92,8 @@ function beggining( ) {
         console.log('>(i)prepared a position table: ');
         console.log(board.pos_tab);
 
-        for (var i=0; i<board.pos_tab.length; i++)
-            for (var j=0; j<board.pos_tab[i].length; j++){
+        for (var i = 0; i < board.pos_tab.length; i++)
+            for (var j = 0; j < board.pos_tab[i].length; j++) {
 
                 var x = board.pos_tab[i][j].x;
                 var y = board.pos_tab[i][j].y;
@@ -71,8 +101,10 @@ function beggining( ) {
                 board.set_field(i, j, state);
             }
 
-        console.log('>(i)set a cells in canvas');
     }
+
+        console.log('>(i)set a cells in canvas');
+
 
     /*maaaakkaaaareeenAAA*/
 

@@ -3,31 +3,56 @@
  */
 
 game = {
+    side_size_set: function(){
+        var side_size = Number(document.forms[0].side_size.value);
+        if( side_size ){
+            board.canvas_h = side_size;
+            board.canvas_w = side_size;
+        }
+        beggining()
+    },
+    cell_radius_set: function(){
+        var cell_radius = Number(document.forms[0].cell_radius.value);
+        if( cell_radius ){
+            board.cell_radius = cell_radius;
+        }
+        beggining()
+    },
+    time_step_set: function(){
+        var time_step = Number(document.forms[0].time_step.value);
+        if( time_step ){
+            this.time_step = time_step;
+        }
+        console.warn('change time step to: ', this.time_step);
+    },
+    next_step_button: function(){
+        //zablokowanie editlinow
+        this.next_step_op();
+    },
     start: function (event) {
         /*//TODO set count neighbours on cells
-        board.c.font = "15px Arial";
-        board.c.textAlign = "center";
-        old_fillstyle = board.c.fillStyle;
-        console.warn('old_filestyle: ', old_fillstyle);
-        board.c.fillStyle = 'white';
+         board.c.font = "15px Arial";
+         board.c.textAlign = "center";
+         old_fillstyle = board.c.fillStyle;
+         console.warn('old_filestyle: ', old_fillstyle);
+         board.c.fillStyle = 'white';
 
-        //console.error('xy: ', board.pos_tab[i][j].x, )
-        for (var i = 0; i < board.size_i; i++) {
-            for (var j = 0; j < board.size_j; j++)
+         //console.error('xy: ', board.pos_tab[i][j].x, )
+         for (var i = 0; i < board.size_i; i++) {
+         for (var j = 0; j < board.size_j; j++)
 
-                board.c.fillText(String(board.numberOfNeightbour(i, j)), board.pos_tab[i][j].x, board.pos_tab[i][j].y);
-        }
+         board.c.fillText(String(board.numberOfNeightbour(i, j)), board.pos_tab[i][j].x, board.pos_tab[i][j].y);
+         }
 
-        board.c.fillStyle = old_fillstyle;*/
+         board.c.fillStyle = old_fillstyle;*/
 
-
-        this.interval_id = window.setInterval(this.next_step, 50)
+        console.warn('evolutation start with: ', this.time_step, 'ms time step');
+        this.interval_id = window.setInterval(this.next_step_op, this.time_step)
     },
     stop: function (event) {
         window.clearInterval(this.interval_id)
     },
-    next_step: function () {
-        //console.log('next step');
+    next_step_op: function () {
         // kopiowanie
         var cell_copy = [];
         //console.log('board.cells: ', board.cells);
@@ -68,6 +93,7 @@ game = {
 
         //console.log('next step -- board.cells: ', JSON.stringify(board.cells));
     },
-    interval_id: null
+    interval_id: null,
+    time_step: 1000
 
 };
