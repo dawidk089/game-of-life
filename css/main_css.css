@@ -75,7 +75,7 @@ label{
 
 label input{
     display: block;
-    width: 15%;
+    width: 60px;
 }
 
 label select{
@@ -112,6 +112,12 @@ main{
 footer p{
     margin: 0;
 }
+
 footer{
     border-top: gray 1px solid;
+}
+
+#freerunning_button, #one_step_button{
+    margin: 5px;
+    text-align: center;
 }

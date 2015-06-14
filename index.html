@@ -46,26 +46,35 @@
         <fieldset>
             <legend>Parametry</legend>
             <form>
-                <!-- TODO utworzyc wpisywanie promienia komorki -->
                 <!-- TODO podpiac bok pola editline -->
                 <label>bok pola
                     <input type="text" name="field_amount">
+                </label>
+                <!-- TODO podpiąć wpisywanie promienia komorki -->
+                <label>promień komórki
+                    <input type="text" name="cell_radius">
                 </label>
                 <!-- TODO podpiac krok czasowy editline -->
                 <label>krok czasowy
                     <input type="text" name="step_delay">
                 </label>
+                <div id="one_step_button">
                     <!-- TODO podpiac next step przycisk-->
                     <input type="button" onclick="console.log('next step')" value="Next step" name="step">
+                </div>
                 <!-- TODO zakomentowac liste wyboru zasady generatora -->
+                <!-- future...
                 <label>zasady generatora
                     <select name="mode">
                         <option value="0">conway</option>
                         <option value="1">own</option>
                     </select>
                 </label>
-                <input type="button" onclick="startss(event)" name="start" value="start">
-                <input type="button" onclick="game.stop(event)" name="stop" value="stop">
+                ... end of future :D -->
+                <div id="freerunning_button">
+                    <input type="button" onclick="startss(event)" name="start" value="start">
+                    <input type="button" onclick="game.stop(event)" name="stop" value="stop">
+                </div>
                 <div id="ranges"></div>
             </form>
         </fieldset>
