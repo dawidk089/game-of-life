@@ -17,7 +17,7 @@ function beggining( ) {
     var canvas_h = 500;
     var canvas_w = canvas_h;
 
-    board.cell_radius = 2;
+    board.cell_radius = 8;
     var interspace = 2;
 
     // oblicza ile zmiescie sie komorek

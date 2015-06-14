@@ -29,55 +29,55 @@
 <nav>
     <ul>
         <li><a href="index.html">Strona główna</a></li>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="init.html">Instrukcja</a></li>
+        <li><a href="documentation.html">Opis</a></li>
+        <li><a href="future%20vision.html">Wizja</a></li>
     </ul>
 </nav>
-<!-- section -->
-<!-- flexbox -->
-<div id="game_wrapper">
+<!-- MAIN -->
+<main>
+<!-- SECTION -->
     <section>
-        <h2 id="incentive"></h2>
-        <div id="fast_game">
-        </div>
-    </section><!--
-    --><aside>
-        <form>
-            <label>bok pola
-                <input type="text" name="field_amount">
-            </label>
-            <label>krok czasowy
-                <input type="text" name="step_delay">
-            </label>
-                <input type="button" onclick="console.log('next step')" value="Next step" name="step">
-            <label>zasady generatora
-                <select name="mode">
-                    <option value="0">conway</option>
-                    <option value="1">own</option>
-                </select>
-            </label>
-            <input type="button" onclick="startss(event)" name="start" value="start">
-            <input type="button" onclick="game.stop(event)" name="stop" value="stop">
-            <div id="ranges"></div>
-        </form>
+        <header><h2>Plansza</h2></header>
+        <div id="fast_game"></div>
+    </section>
+<!-- ASIDE -->
+    <aside>
+        <fieldset>
+            <legend>Parametry</legend>
+            <form>
+                <!-- TODO utworzyc wpisywanie promienia komorki -->
+                <!-- TODO podpiac bok pola editline -->
+                <label>bok pola
+                    <input type="text" name="field_amount">
+                </label>
+                <!-- TODO podpiac krok czasowy editline -->
+                <label>krok czasowy
+                    <input type="text" name="step_delay">
+                </label>
+                    <!-- TODO podpiac next step przycisk-->
+                    <input type="button" onclick="console.log('next step')" value="Next step" name="step">
+                <!-- TODO zakomentowac liste wyboru zasady generatora -->
+                <label>zasady generatora
+                    <select name="mode">
+                        <option value="0">conway</option>
+                        <option value="1">own</option>
+                    </select>
+                </label>
+                <input type="button" onclick="startss(event)" name="start" value="start">
+                <input type="button" onclick="game.stop(event)" name="stop" value="stop">
+                <div id="ranges"></div>
+            </form>
+        </fieldset>
     </aside>
-</div>
-<!-- footer -->
+</main>
+<!-- FOOTER -->
 <footer>
-
+    <p><small>Dawid Karmiński</small></p>
+    <p><small>Fizyka Techniczna</small></p>
+    <p><small>WFiIS</small></p>
+    <p><small>Pierwszy projekt na przedmiot TI</small></p>
 </footer>
-
-
-<p>&gt;Plan strony</p>
-<ul>
-    <li>na cala strone generator gry w zycie - losowy</li>
-    <li>na gorze pasek menu</li>
-    <li>lewy-gorny rog - informacje o autorze</li>
-</ul>
 </body>
 
 </html>
-<!-- article -->
-<!-- aside -->
