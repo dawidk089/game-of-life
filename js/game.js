@@ -27,6 +27,7 @@ game = {
     },
     next_step_button: function(){
         //zablokowanie editlinow
+        board.init_cells();
         this.next_step_op();
     },
     start: function (event) {
